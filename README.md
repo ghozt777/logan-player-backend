@@ -212,7 +212,7 @@ Its an API for a video library that also handles user authentication / authoriza
 #### response Structure upon successful logging out
 ```json
     {
-        "success": false,
+        "success": true,
         "message": "logout successful"
     }
 ```
