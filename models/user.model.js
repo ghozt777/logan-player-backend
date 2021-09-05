@@ -5,7 +5,8 @@ const {Schema,model} = mongoose
 const userSchema = new Schema({
     username:{
         type: String,
-        required: "cant create a user without a username"
+        required: "cant create a user without a username",
+        unique:"username already taken"
     },
     email:{
         type: mongoose.SchemaTypes.Email,
