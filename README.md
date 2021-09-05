@@ -126,20 +126,20 @@ Its an API for a video library that also handles user authentication / authoriza
 
 ```json
   {
-    "success": true,
-    "msssage": "user creation successfull",
-    "savedUser": {
-        "username": "logan777",
-        "email": "loganpaul@gmail.com",
-        "password": "** hashed password **",
-        "_id": "** unique user id **",
-        "createdAt": "2021-09-05T07:09:11.540Z",
-        "updatedAt": "2021-09-05T07:09:11.540Z",
-        "__v": 0
-    },
-    "accessToken": "** access token **",
-    "refreshToken": "** refresh token **"
-}
+        "success": true,
+        "msssage": "user creation successfull",
+        "savedUser": {
+            "username": "logan777",
+            "email": "loganpaul@gmail.com",
+            "password": "** hashed password **",
+            "_id": "** unique user id **",
+            "createdAt": "2021-09-05T07:09:11.540Z",
+            "updatedAt": "2021-09-05T07:09:11.540Z",
+            "__v": 0
+        },
+        "accessToken": "** access token **",
+        "refreshToken": "** refresh token **"
+    }
 ```
 
 #### user Authorization (to validate the user)
@@ -162,15 +162,15 @@ Its an API for a video library that also handles user authentication / authoriza
 
 ```json
     {
-    "success": true,
-    "username": "logan777",
-    "email": "loganpaul@gmail.com",
-    "password": "$2b$10$hmWSXqVN3TuWaXhK3ie8buWKSWHBeiyPnzFRrnYhWi7n2BtlAUAdi",
-    "iat": 1630825751,
-    "exp": 1630837751,
-    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI73h6IdfXVCJ9.eyJ1c2VybmFtZSI6Imd34xvz2FuNzc3IiwiZW1haWwiOiJsb2dhbnBgdWxAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkaG1XU1hxVkdzVHVXQVhoSzZpZTlidVdLU1dIQmVpeVBuekZScm5ZAHdpnM4yQnRsQVVBZGkiLCJpYXQiOjE2MzA4MjU7jTEsImV4cCI6MTYzMDgzNzc1MX0.jK8BYt-I-fUcKYouBitch-1JNoRLUZ7-W2sHMbpwg",
-    "refreshToken": "eyjhbGciOiJIUzI1NiIsiNR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImxvZ2FuNzc3IiwiZW1haWwiOiJsb2dhbnBhdWxAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkaG1XU1hxVk4zVHVXQVfUcKYouBitchTliDVdLU1dGQmVpeVBuekZScm5ZaHdpMm4yQnRsQVVBZGkiLCJpYXQiOjE2MzA4MjU3NTF9.4Io_8tZkhjD28wNIPdMEY5yJAjhzt2Dr5OwkA4GivUI"
-}
+        "success": true,
+        "username": "logan777",
+        "email": "loganpaul@gmail.com",
+        "password": "$2b$10$hmWSXqVN3TuWaXhK3ie8buWKSWHBeiyPnzFRrnYhWi7n2BtlAUAdi",
+        "iat": 1630825751,
+        "exp": 1630837751,
+        "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI73h6IdfXVCJ9.eyJ1c2VybmFtZSI6Imd34xvz2FuNzc3IiwiZW1haWwiOiJsb2dhbnBgdWxAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkaG1XU1hxVkdzVHVXQVhoSzZpZTlidVdLU1dIQmVpeVBuekZScm5ZAHdpnM4yQnRsQVVBZGkiLCJpYXQiOjE2MzA4MjU7jTEsImV4cCI6MTYzMDgzNzc1MX0.jK8BYt-I-fUcKYouBitch-1JNoRLUZ7-W2sHMbpwg",
+        "refreshToken": "eyjhbGciOiJIUzI1NiIsiNR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImxvZ2FuNzc3IiwiZW1haWwiOiJsb2dhbnBhdWxAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkaG1XU1hxVk4zVHVXQVfUcKYouBitchTliDVdLU1dGQmVpeVBuekZScm5ZaHdpMm4yQnRsQVVBZGkiLCJpYXQiOjE2MzA4MjU3NTF9.4Io_8tZkhjD28wNIPdMEY5yJAjhzt2Dr5OwkA4GivUI"
+    }
 ```
 
 #### Note  : if the `accessToken` is invalid or expired the `refreshToken` is used to automatically generate a new `accessToken` and pass it down to the user along with a new `refreshToken` and the old `refreshToken` is flushed from the DB and hence cannot be used to make new request. If the `refreshToken` is invalid(tempered with) then the request to generate new `accessToken` / authorize is rejected
@@ -191,10 +191,10 @@ Its an API for a video library that also handles user authentication / authoriza
 #### response Structure 
 ```json
     {
-    "success": true,
-    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImxvZ2FuNzc4IiwiZW1haWwiOFUckuBitchhdWxAD21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMtAkaG1XU1hxVk4zVHVxQVhoSzZpZTlidGdLu1dIQmVpeVBuekZScm5ZaHdpMm8yQnRsQVGBZGkiLCJpYXQiOjE2MzA4Mjg0OTAsImV4cCI6MTYzMDg0MDQ5MH0.cMJ3v3AImHKhWuiUnTtvNDus_dsUkczBZkr4xfOKp0Y",
-    "refreshToken": "eyJhbGciOiJIuzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImxvZ2FuNzc4IiwiZW1haWwiOiJsd2dhbnBhdWxAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkaG1Xg1hxVk7zVHVXQVhoSzZfuCkUbiTchmVplVBueIZScm5ZaHdpMm4yQnRsQVVBZGkiLCJpYXQiOjE2MzA4Mjg9OTB9.JBNHlc9U2FCbGxLxAd7sLaJ_D6D94bghsxtDFypeTQk"
-}
+        "success": true,
+        "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImxvZ2FuNzc4IiwiZW1haWwiOFUckuBitchhdWxAD21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMtAkaG1XU1hxVk4zVHVxQVhoSzZpZTlidGdLu1dIQmVpeVBuekZScm5ZaHdpMm8yQnRsQVGBZGkiLCJpYXQiOjE2MzA4Mjg0OTAsImV4cCI6MTYzMDg0MDQ5MH0.cMJ3v3AImHKhWuiUnTtvNDus_dsUkczBZkr4xfOKp0Y",
+        "refreshToken": "eyJhbGciOiJIuzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImxvZ2FuNzc4IiwiZW1haWwiOiJsd2dhbnBhdWxAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkaG1Xg1hxVk7zVHVXQVhoSzZfuCkUbiTchmVplVBueIZScm5ZaHdpMm4yQnRsQVVBZGkiLCJpYXQiOjE2MzA4Mjg9OTB9.JBNHlc9U2FCbGxLxAd7sLaJ_D6D94bghsxtDFypeTQk"
+    }
 ``` 
 ### user Logout
 
@@ -212,7 +212,7 @@ Its an API for a video library that also handles user authentication / authoriza
 #### response Structure upon successful logging out
 ```json
     {
-    "success": false,
-    "message": "logout successful"
-}
+        "success": false,
+        "message": "logout successful"
+    }
 ```
