@@ -18,6 +18,7 @@ router.use("/",findUser)
 router.route("/")
 .post(async(req,res) => {
     const {password} = req.body
+    if(password==null) return res.status(401).json({success:false,message:"cant login without a password"})
     const user = req.foundUser
     if(await bcrypt.compare(password,user.password)){
         try{

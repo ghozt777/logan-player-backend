@@ -26,13 +26,12 @@ router.route("/")
     }
     // forwarding the request to JWT server
     try{
-        const responseFfromJWT = await axios.post("https://jwt-server.ghozt777.repl.co/validate",{},{
-            headers:{
-                authorization: `Bearer ${token}`
+        jwt.verify(token,process.env.ACCESS_TOKEN_SECRET, (err,user) => {
+            if(err) throw new Error()
+            else{
+                res.status(200).json({success:true,...user,accessToken:token,refreshToken:req.body.token})
             }
         })
-        const data = responseFfromJWT.data
-        res.status(200).json({...data,accessToken:token,refreshToken:req.body.token})
     }catch(err){
         // automatic regeneration of accestoken through refresh token
         const refreshToken = req.body.token
