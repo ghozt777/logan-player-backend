@@ -65,7 +65,7 @@ Its an API for a video library that also handles user authentication / authoriza
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `username`      | `string` | **Required** username of a registered user |
-| `comment`      | `Object ID` | **Required** description of the comment |
+| `comment`      | `string` | **Required** description of the comment |
 
 #### required query paramters
 | Parameter | Type     | Description                       |
