@@ -17,15 +17,16 @@ router.route("/")
         const foundToken = await Token.findOne({token:rt})
         if(!foundToken) return res.status(401).json({success:false,message:"not a valid refresh token"})
     }catch(err){
-        res.status(500).json({success:false,message:"internal server error"})
+        return res.status(500).json({success:false,message:"internal server error"})
     }
     const authHeader = req.headers['authorization']
     const token = authHeader && authHeader.split(' ')[1]
     if(token==null){
         return res.status(401).json({success:false,message:"can't login without a access-token"})
     }
-    // forwarding the request to JWT server
+    
     try{
+        // local validation 
         jwt.verify(token,process.env.ACCESS_TOKEN_SECRET, (err,user) => {
             if(err) throw new Error()
             else{
@@ -50,6 +51,7 @@ router.route("/")
              }
              foundUser = user
         })
+        // forwarding the request to JWT server
         const token = await axios.post("https://jwt-server.ghozt777.repl.co/gen-token",{user:{username:foundUser.username,email:foundUser.email,password:foundUser.password},time:"200"}) 
         // updating refresh token collection of the db with the new refreshtoken
         // deleting the old token from the collection
