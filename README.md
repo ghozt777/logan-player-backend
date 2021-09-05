@@ -84,7 +84,7 @@ Its an API for a video library that also handles user authentication / authoriza
   {
     "success": true,
     "updatedVideo": {
-        "_id": "** user _id **",
+        "_id": "** video _id **",
         "title": "The Beauty Of Mr Robot",
         "watchId": "5VEroFjcq1M",
         "videoLink": "https://youtube.com/watch?v=5VEroFjcq1M",
