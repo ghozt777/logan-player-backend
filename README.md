@@ -141,3 +141,78 @@ Its an API for a video library that also handles user authentication / authoriza
     "refreshToken": "** refresh token **"
 }
 ```
+
+#### user Authorization (to validate the user)
+
+```html
+    POST https://logan-player-backend.ghozt777.repl.co/authorize
+```
+#### parameters required in the 'autorization' header
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `accessToken`      | `Bearer Token` | **Required** & **Valid** accessToken handed the client|
+
+#### parameters required in the request body
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `token`      | `Bearer Token` | **Required** & **Valid** refreshToken handed the client|
+
+
+#### response Structure
+
+```json
+    {
+    "success": true,
+    "username": "logan777",
+    "email": "loganpaul@gmail.com",
+    "password": "$2b$10$hmWSXqVN3TuWaXhK3ie8buWKSWHBeiyPnzFRrnYhWi7n2BtlAUAdi",
+    "iat": 1630825751,
+    "exp": 1630837751,
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI73h6IdfXVCJ9.eyJ1c2VybmFtZSI6Imd34xvz2FuNzc3IiwiZW1haWwiOiJsb2dhbnBgdWxAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkaG1XU1hxVkdzVHVXQVhoSzZpZTlidVdLU1dIQmVpeVBuekZScm5ZAHdpnM4yQnRsQVVBZGkiLCJpYXQiOjE2MzA4MjU7jTEsImV4cCI6MTYzMDgzNzc1MX0.jK8BYt-I-fUcKYouBitch-1JNoRLUZ7-W2sHMbpwg",
+    "refreshToken": "eyjhbGciOiJIUzI1NiIsiNR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImxvZ2FuNzc3IiwiZW1haWwiOiJsb2dhbnBhdWxAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkaG1XU1hxVk4zVHVXQVfUcKYouBitchTliDVdLU1dGQmVpeVBuekZScm5ZaHdpMm4yQnRsQVVBZGkiLCJpYXQiOjE2MzA4MjU3NTF9.4Io_8tZkhjD28wNIPdMEY5yJAjhzt2Dr5OwkA4GivUI"
+}
+```
+
+### Note  : if the `accessToken` is invalid or expired the `refreshToken` is used to automatically generate a new `accessToken` and pass it down to the user along with a new `refreshToken` and the old `refreshToken` is flushed from the DB and hence cannot be used to make new request. If the `refreshToken` is invalid(tempered with) then the request to generate new `accessToken` / authorize is rejected
+
+#### user Login (to generate a fresh pair of tokens for logged out user)
+```html
+    POST https://logan-player-backend.ghozt777.repl.co/login
+```
+
+#### paramters required in the request body  
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `username`      | `string` | **Required** & **Valid** username of a registered user|
+| `password`      | `string` | **Required** & **Valid** password of the registered user|
+
+
+
+#### response Structure 
+```json
+    {
+    "success": true,
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImxvZ2FuNzc4IiwiZW1haWwiOFUckuBitchhdWxAD21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMtAkaG1XU1hxVk4zVHVxQVhoSzZpZTlidGdLu1dIQmVpeVBuekZScm5ZaHdpMm8yQnRsQVGBZGkiLCJpYXQiOjE2MzA4Mjg0OTAsImV4cCI6MTYzMDg0MDQ5MH0.cMJ3v3AImHKhWuiUnTtvNDus_dsUkczBZkr4xfOKp0Y",
+    "refreshToken": "eyJhbGciOiJIuzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImxvZ2FuNzc4IiwiZW1haWwiOiJsd2dhbnBhdWxAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkaG1Xg1hxVk7zVHVXQVhoSzZfuCkUbiTchmVplVBueIZScm5ZaHdpMm4yQnRsQVVBZGkiLCJpYXQiOjE2MzA4Mjg9OTB9.JBNHlc9U2FCbGxLxAd7sLaJ_D6D94bghsxtDFypeTQk"
+}
+``` 
+### user Logout
+
+```html
+    DELETE https://logan-player-backend.ghozt777.repl.co/logout
+```
+
+#### parameters required in the request body
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `token`      | `Bearer Token` | **Required** & **Valid** refreshToken handed the client|
+
+#### Note: By Loging out the server removes the provided `refreshToken` from the DB and hence no autorization will be valid using that `refreshToken`. To get authorized the user has to login again and get a fresh pair of `accessToken` and `refreshToken`
+
+#### response Structure upon successful logging out
+```json
+    {
+    "success": false,
+    "message": "logout successful"
+}
+```
