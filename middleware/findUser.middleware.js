@@ -1,5 +1,7 @@
 const {User} = require("../models/user.model")
 const findUser = async (req,res,next) => {
+    
+
     try{
         const username = req.body.username
         const foundUser = await User.findOne({username:username})

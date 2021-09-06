@@ -16,9 +16,13 @@ const videos = require("./routes/videos.route")
 const comments = require("./routes/comments.route")
 const authorize = require("./routes/authorize.route")
 const createUser = require("./routes/createUser.route")
+const resetPassword = require("./routes/reset-password.route")
 
 // 404 handler
 const {routeNotFound} = require("./middleware/routeNotFound.middleware")
+
+// Error Handler
+const {errorHandler} = require("./middleware/errorHandler.middleware")
 
 // routing
 app.use("/",home)
@@ -28,6 +32,7 @@ app.use("/videos",videos)
 app.use("/comments",comments)
 app.use("/authorize",authorize)
 app.use("/create-user",createUser)
+app.use("/reset-password",resetPassword)
 
 
 /**
@@ -35,6 +40,12 @@ app.use("/create-user",createUser)
  */
 
 app.use(routeNotFound)
+
+
+/**
+ * Error Handler Dont Move
+ */
+app.use(errorHandler)
 
 const PORT = 5000
 app.listen(PORT,_ => console.log("server started on port: ",PORT))
