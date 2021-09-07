@@ -207,7 +207,7 @@ Its an API for a video library that also handles user authentication / authoriza
 
 ```json
     {
-        success:true,
-        message:"email sent"
+        "success":true,
+        "message":"email sent"
     }
 ```
