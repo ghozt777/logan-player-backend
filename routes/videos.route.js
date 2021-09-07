@@ -52,7 +52,7 @@ router.route("/:videoId")
                 const comment = req.body.comment
                 video.comments.push({user:foundUser,content:{time:new Date().toLocaleDateString(),description:comment}})
                 await video.save()
-                let updatedVideo = await Video.findById(video).populate("comments.user")
+                let updatedVideo = await Video.findById(video)
                 res.status(200).json({success:true,updatedVideo,tokens})
                 break;
 

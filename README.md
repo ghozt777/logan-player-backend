@@ -85,69 +85,29 @@ Its an API for a video library that also handles user authentication / authoriza
 {
     "success": true,
     "updatedVideo": {
-        "_id": "6134527c03cb75060dd77306",
-        "title": "Mr Robot Decryption Scene",
-        "watchId": "i9CBKGLVCME",
-        "videoLink": "https://youtube.com/watch?v=i9CBKGLVCME",
-        "thumbnail": "https://img.youtube.com/vi/i9CBKGLVCME/maxresdefault.jpg",
-        "description": "©2017 NBC UNIVERSAL, INC. ALL RIGHTS RESERVED. A DIVISION OF NBC UNIVERSAL.",
+        "_id": "61345ce403cb75060dd7731c",
+        "title": "LOGAN PAUL'S FUNNIEST VLOG MOMENTS!!!",
+        "watchId": "rOz7QEH6qeU",
+        "videoLink": "https://youtube.com/watch?v=rOz7QEH6qeU",
+        "thumbnail": "https://img.youtube.com/vi/rOz7QEH6qeU/maxresdefault.jpg",
+        "description": "Logan paul's funniest vlog moments part 1.",
         "comments": [
             {
                 "content": {
                     "time": "07/09/2021",
-                    "description": "this is dope"
+                    "description": "hell ya 🎉"
                 },
-                "user": {
-                    "_id": "6136e322c15de97ee60c1d51",
-                    "username": "test123",
-                    "email": "ghoztsd@gmail.com",
-                    "password": "$2b$10$5aaW/DYEz5iKi4OELA2q7.0NpcVWFup7J5a3aB3bPGAN7Tw6JEzGi",
-                    "createdAt": "2021-09-07T03:57:22.951Z",
-                    "updatedAt": "2021-09-07T03:57:22.951Z",
-                    "__v": 0
-                },
-                "_id": "6136e41f631ad1a5e6cebb71"
-            },
-            {
-                "content": {
-                    "time": "07/09/2021",
-                    "description": "keep posting more videos"
-                },
-                "user": {
-                    "_id": "6136e322c15de97ee60c1d51",
-                    "username": "test123",
-                    "email": "ghoztsd@gmail.com",
-                    "password": "$2b$10$5aaW/DYEz5iKi4OELA2q7.0NpcVWFup7J5a3aB3bPGAN7Tw6JEzGi",
-                    "createdAt": "2021-09-07T03:57:22.951Z",
-                    "updatedAt": "2021-09-07T03:57:22.951Z",
-                    "__v": 0
-                },
-                "_id": "6136e64657963186d4282304"
-            },
-            {
-                "content": {
-                    "time": "07/09/2021",
-                    "description": "keep posting more videos"
-                },
-                "user": {
-                    "_id": "6136e322c15de97ee60c1d51",
-                    "username": "test123",
-                    "email": "ghoztsd@gmail.com",
-                    "password": "$2b$10$5aaW/DYEz5iKi4OELA2q7.0NpcVWFup7J5a3aB3bPGAN7Tw6JEzGi",
-                    "createdAt": "2021-09-07T03:57:22.951Z",
-                    "updatedAt": "2021-09-07T03:57:22.951Z",
-                    "__v": 0
-                },
-                "_id": "6136e70e0e1cfb70cc5a0bbd"
+                "user": "6136e322c15de97ee60c1d51",
+                "_id": "6136ea51744abc4baed2a80f"
             }
         ],
-        "createdAt": "2021-09-05T05:15:40.115Z",
-        "updatedAt": "2021-09-07T04:14:06.763Z",
-        "__v": 3
+        "createdAt": "2021-09-05T06:00:04.607Z",
+        "updatedAt": "2021-09-07T04:28:01.825Z",
+        "__v": 1
     },
     "tokens": {
-        "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QxMjMiLCJlbWFpbCIsdmdob3p0c2RAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkNWFhVy9EWUV6NWlLaTRPRUxBMnE3LjB2323OcFuckuBitchDdKNWEzYUIzYlBHQU43VHc2SkV6R2kiLCJpYXQiOjE2MzA5ODcwNDMsImV4cCI6MTYzMDk5OTA0M30.tkL0Rns4FBuggHSa0V3SXWCAy0VgmURn0N7wX7bNk7E",
-        "refreshToken": "eyJhbGciOiJIUzI1NiIssdcR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6In233QxMjMiLCJlbWFpbCI6Imdob3p0c2RAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkNWFhVy9EWUV6NWlLaTRFuckuBitchOcGNWV0Z1cDdKNWEzYUIzYlBHQU43VHc2SkV6R2kiLCJpYXQiOjE2MzA5ODcwNDN9.z4aFb9YQZl-r0N5eqZi6qJwQfg3ME6-Y96Xwe6JrMCM"
+        "accessToken": "eyJhbGciOr335UzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Insdkc3QxMjMiLCJlbWFpbCI6Imdob3p0c2RAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkNWFhVy9EWUV6NWlLaTRPRFuckuBitchDdKNWEzYUIzYlBHQU43VHc2SkV6R2kiLCJpYXQiOjE2MzA5ODcwNDMsImV4cCI6MTYzMDk5OTA0M30.wejL0Rns4FBuggHSa0V3SXWCAy0VgmURn0N7wX7bNk7E",
+        "refreshToken": "eyJhbGciOiJI87sd87InR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QxMjMsdhhlbWFpbCI6Imdob3p0c2RAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkNWFhVy9EWUVfUckuBitcHxBMnE3LjBOcGNWV0Z1cDdKNWEzYUIzYlBHQU43VHc2SkV6R2kiLCJpYXQiOjE2MzA5ODcwNDN9.z4aFb9YQZl-r0N5eqZi6qJwQfsd7878sdLW6JrMCM"
     }
 }
 ```
