@@ -14,7 +14,6 @@ async function verifyToken(req,res,next){
     }
     const authHeader = req.headers['authorization']
     const token = authHeader && authHeader.split(' ')[1]
-    console.log("middleware called",token)
     if(token==null){
         return res.status(401).json({success:false,message:"can't login without a access-token"})
     }
@@ -24,8 +23,7 @@ async function verifyToken(req,res,next){
         jwt.verify(token,process.env.ACCESS_TOKEN_SECRET, (err,user) => {
             if(err) throw new Error()
             else{
-                req.authorizedUser = {
-                    user,
+                req.authorizedTokens = {
                     accessToken:token,
                     refreshToken:req.body.token
                 }
@@ -61,8 +59,7 @@ async function verifyToken(req,res,next){
         }
         // adding the newly generated refresh token to the db
         await new Token({token:token.data.refreshToken}).save()
-        req.authorizedUser = {
-            user:foundUser,
+        req.authorizedTokens = {
             accessToken:token.data.accessToken,
             refreshToken:token.data.refreshToken
         }

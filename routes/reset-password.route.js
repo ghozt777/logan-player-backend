@@ -34,8 +34,30 @@ router.route("/")
                 to: foundUser.email, // list of receivers
                 subject: "Hello ✔", 
                 html: `
-                <h1>Greetings from Logan Player Team</h1>
-                <a href="http://localhost:5000/reset-password/${emailToken}"><button>reset</button></a>
+                <h1 style="
+                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                    color:#1F2937;
+                    font-size: 2rem;
+                ">Greetings from Logan Player Team</h1>
+                <small
+                style="
+                    display:block;
+                    margin: 1rem auto;
+                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                    color:#1F2937;
+                "
+                > Please click on the provided link below to reset your password </small>
+                <a href="http://localhost:5000/reset-password/${emailToken}"><button style="
+                    border-style: none;
+                    padding: 1rem;
+                    background-color: #1F2937;
+                    color: white;
+                    box-shadow: 0 8px 6px -2px #DDD6FE; 
+                    min-height: 50px;
+                    min-width: 70px;
+                    border-radius: 0.5rem;
+                    cursor: pointer;
+                ">reset password</button></a>
                 `, 
             });
 
@@ -50,8 +72,47 @@ router.route("/")
 router.route("/:token")
 .get(async(req,res) => {
     const token = req.params.token
-    res.status(200).json({token})
+    let foundUser
+    jwt.verify(token,process.env.EMAIL_TOKEN_SECRET,(err,user) => {
+        if(err) res.status(401).send(`
+        <h1>Looks Like the token is tampered ☹ ️</h1>
+        <p>Please request another mail  📨 and dont tamper the token to reset password successfully</p>
+        `)
+        else foundUser = user
+    })
 
+    res.status(200).send(`
+    <h1>Welcome ${foundUser.username}</h1>
+    <h2>Reset Password</h2>
+    <small>Enter a new password</small>
+    <form action="http://localhost:5000/reset-password/landing" method="POST">
+        <input type="password" name="password" placeholder="password"/>
+        <input type="password" name="confirm-password" placeholder="confirm password"/>
+        <button type="submit">submit</button>
+    </form>
+    `)
+})
+
+
+router.route("/landing")
+.post((req,res) => {
+
+    console.log(req.body)
+
+    res.status(200).send(`
+    <h1>A OK Bruh !</h1>
+    <a href="http://localhost:5000/"><button style="
+                    border-style: none;
+                    padding: 1rem;
+                    background-color: #1F2937;
+                    color: white;
+                    box-shadow: 0 8px 6px -2px #DDD6FE; 
+                    min-height: 50px;
+                    min-width: 70px;
+                    border-radius: 0.5rem;
+                    cursor: pointer;
+                "> Home </button></a>
+    `)
 })
 
 module.exports = router

@@ -51,10 +51,10 @@ Its an API for a video library that also handles user authentication / authoriza
 ```
 
 
-### Adding Comments to videos
+### Adding Comments to videos (requires an authorized user)
 
 ```http
-    POST https://logan-player-backend.ghozt777.repl.co/comments/:videoId
+    POST https://logan-player-backend.ghozt777.repl.co/videos/<videoId>?type=add-comment
 ```
 #### paramters are required in the URL
 | Parameter | Type     | Description                       |
@@ -65,48 +65,94 @@ Its an API for a video library that also handles user authentication / authoriza
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `username`      | `string` | **Required** username of a registered user |
+| `token`      | `Bearer` | **Required** refresh token of the user |
 | `comment`      | `string` | **Required** description of the comment |
+
+#### parameters required in the 'autorization' header
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `accessToken`      | `Bearer Token` | **Required** & **Valid** accessToken handed the client|
 
 #### required query paramters
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `type`      | `add-comment` | **Required** type of action: `add-comment`|
 
-#### template url
-```html
-  POST https://logan-player-backend.ghozt777.repl.co/comments/<videoID>?type=add-comment
-
-```
 
 #### response Structure
 
 ```json
-  {
+{
     "success": true,
     "updatedVideo": {
-        "_id": "** video _id **",
-        "title": "The Beauty Of Mr Robot",
-        "watchId": "5VEroFjcq1M",
-        "videoLink": "https://youtube.com/watch?v=5VEroFjcq1M",
-        "thumbnail": "https://img.youtube.com/vi/5VEroFjcq1M/maxresdefault.jpg",
-        "description": "Directed by Sam Esmail Director of photography : Tod Campbell Song : Where's my mind - Telepathic Teddy bear",
+        "_id": "6134527c03cb75060dd77306",
+        "title": "Mr Robot Decryption Scene",
+        "watchId": "i9CBKGLVCME",
+        "videoLink": "https://youtube.com/watch?v=i9CBKGLVCME",
+        "thumbnail": "https://img.youtube.com/vi/i9CBKGLVCME/maxresdefault.jpg",
+        "description": "©2017 NBC UNIVERSAL, INC. ALL RIGHTS RESERVED. A DIVISION OF NBC UNIVERSAL.",
         "comments": [
             {
                 "content": {
-                    "time": "9/5/2021",
-                    "description": "this video is dope af 😎"
+                    "time": "07/09/2021",
+                    "description": "this is dope"
                 },
-                "user": "** user _id **",
-                "_id": "** comment _id **"
+                "user": {
+                    "_id": "6136e322c15de97ee60c1d51",
+                    "username": "test123",
+                    "email": "ghoztsd@gmail.com",
+                    "password": "$2b$10$5aaW/DYEz5iKi4OELA2q7.0NpcVWFup7J5a3aB3bPGAN7Tw6JEzGi",
+                    "createdAt": "2021-09-07T03:57:22.951Z",
+                    "updatedAt": "2021-09-07T03:57:22.951Z",
+                    "__v": 0
+                },
+                "_id": "6136e41f631ad1a5e6cebb71"
+            },
+            {
+                "content": {
+                    "time": "07/09/2021",
+                    "description": "keep posting more videos"
+                },
+                "user": {
+                    "_id": "6136e322c15de97ee60c1d51",
+                    "username": "test123",
+                    "email": "ghoztsd@gmail.com",
+                    "password": "$2b$10$5aaW/DYEz5iKi4OELA2q7.0NpcVWFup7J5a3aB3bPGAN7Tw6JEzGi",
+                    "createdAt": "2021-09-07T03:57:22.951Z",
+                    "updatedAt": "2021-09-07T03:57:22.951Z",
+                    "__v": 0
+                },
+                "_id": "6136e64657963186d4282304"
+            },
+            {
+                "content": {
+                    "time": "07/09/2021",
+                    "description": "keep posting more videos"
+                },
+                "user": {
+                    "_id": "6136e322c15de97ee60c1d51",
+                    "username": "test123",
+                    "email": "ghoztsd@gmail.com",
+                    "password": "$2b$10$5aaW/DYEz5iKi4OELA2q7.0NpcVWFup7J5a3aB3bPGAN7Tw6JEzGi",
+                    "createdAt": "2021-09-07T03:57:22.951Z",
+                    "updatedAt": "2021-09-07T03:57:22.951Z",
+                    "__v": 0
+                },
+                "_id": "6136e70e0e1cfb70cc5a0bbd"
             }
         ],
-        "createdAt": "2021-09-05T05:13:08.807Z",
-        "updatedAt": "2021-09-05T07:24:27.528Z",
-        "__v": 1
+        "createdAt": "2021-09-05T05:15:40.115Z",
+        "updatedAt": "2021-09-07T04:14:06.763Z",
+        "__v": 3
+    },
+    "tokens": {
+        "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QxMjMiLCJlbWFpbCIsdmdob3p0c2RAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkNWFhVy9EWUV6NWlLaTRPRUxBMnE3LjB2323OcFuckuBitchDdKNWEzYUIzYlBHQU43VHc2SkV6R2kiLCJpYXQiOjE2MzA5ODcwNDMsImV4cCI6MTYzMDk5OTA0M30.tkL0Rns4FBuggHSa0V3SXWCAy0VgmURn0N7wX7bNk7E",
+        "refreshToken": "eyJhbGciOiJIUzI1NiIssdcR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6In233QxMjMiLCJlbWFpbCI6Imdob3p0c2RAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkNWFhVy9EWUV6NWlLaTRFuckuBitchOcGNWV0Z1cDdKNWEzYUIzYlBHQU43VHc2SkV6R2kiLCJpYXQiOjE2MzA5ODcwNDN9.z4aFb9YQZl-r0N5eqZi6qJwQfg3ME6-Y96Xwe6JrMCM"
     }
 }
-
 ```
+
+#### Note : reponse also includes `accessToken` ans `refreshToken` as in case of a stale `accessToken` the server automatically refreshes the tokens and provides new ones and hence its necessary to store them on the cliet side. This is the case for any authorizred route : it will give baack `accessToken` and `refreshToken` back. If the `accessToken` is invalid or expired the `refreshToken` is used to automatically generate a new `accessToken` and pass it down to the user along with a new `refreshToken` and the old `refreshToken` is flushed from the DB and hence cannot be used to make new request. If the `refreshToken` is invalid(tempered with) then the request to generate new `accessToken` / authorize is rejected
 
 ### User Authentication / Authorization
 
@@ -141,39 +187,6 @@ Its an API for a video library that also handles user authentication / authoriza
         "refreshToken": "** refresh token **"
     }
 ```
-
-#### user Authorization (to validate the user)
-
-```html
-    POST https://logan-player-backend.ghozt777.repl.co/authorize
-```
-#### parameters required in the 'autorization' header
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `accessToken`      | `Bearer Token` | **Required** & **Valid** accessToken handed the client|
-
-#### parameters required in the request body
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `token`      | `Bearer Token` | **Required** & **Valid** refreshToken handed the client|
-
-
-#### response Structure
-
-```json
-    {
-        "success": true,
-        "username": "logan777",
-        "email": "loganpaul@gmail.com",
-        "password": "$2b$10$hmWSXqVN3TuWaXhK3ie8buWKSWHBeiyPnzFRrnYhWi7n2BtlAUAdi",
-        "iat": 1630825751,
-        "exp": 1630837751,
-        "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI73h6IdfXVCJ9.eyJ1c2VybmFtZSI6Imd34xvz2FuNzc3IiwiZW1haWwiOiJsb2dhbnBgdWxAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkaG1XU1hxVkdzVHVXQVhoSzZpZTlidVdLU1dIQmVpeVBuekZScm5ZAHdpnM4yQnRsQVVBZGkiLCJpYXQiOjE2MzA4MjU7jTEsImV4cCI6MTYzMDgzNzc1MX0.jK8BYt-I-fUcKYouBitch-1JNoRLUZ7-W2sHMbpwg",
-        "refreshToken": "eyjhbGciOiJIUzI1NiIsiNR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImxvZ2FuNzc3IiwiZW1haWwiOiJsb2dhbnBhdWxAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkaG1XU1hxVk4zVHVXQVfUcKYouBitchTliDVdLU1dGQmVpeVBuekZScm5ZaHdpMm4yQnRsQVVBZGkiLCJpYXQiOjE2MzA4MjU3NTF9.4Io_8tZkhjD28wNIPdMEY5yJAjhzt2Dr5OwkA4GivUI"
-    }
-```
-
-#### Note  : if the `accessToken` is invalid or expired the `refreshToken` is used to automatically generate a new `accessToken` and pass it down to the user along with a new `refreshToken` and the old `refreshToken` is flushed from the DB and hence cannot be used to make new request. If the `refreshToken` is invalid(tempered with) then the request to generate new `accessToken` / authorize is rejected
 
 #### user Login (to generate a fresh pair of tokens for logged out user)
 ```html
@@ -214,5 +227,27 @@ Its an API for a video library that also handles user authentication / authoriza
     {
         "success": true,
         "message": "logout successful"
+    }
+```
+
+### resetting password
+
+```html
+    GET https://logan-player-backend.ghozt777.repl.co/reset-password
+```
+
+#### parameters required in the request body
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `email`      | `Email` | **Required** & **Valid** email address of a registered user|
+
+#### Note: If you reset your password you will get a email with a link to reset-your password where you provide your new password to complete the process
+
+#### response for successful email-verification
+
+```json
+    {
+        success:true,
+        message:"email sent"
     }
 ```
