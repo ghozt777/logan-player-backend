@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Reset Password</h2>
+    <small>Enter a new password</small>
+    <form action="http://localhost:5000/reset-password/landing" method="post">
+            <input type="password" name="password" id="paswd" placeholder="password"/>
+            <input type="password" name="confirmPassword" id="cfm-passwd" placeholder="confirm password"/>
+            <button type="submit" id="submit">submit</button>
+    </form>
+</body>
+<script>
+    const password = document.querySelector("#passwd")
+    const cfrmPassword = document.querySelector("#confirmPassword")
+    const submit = document.querySelector("#submit")
+
+    password.addEventListener("change",(e) => {
+        password.value=e.target.value
+    })
+
+    cfrmPassword.addEventListener("change",(e) => {
+        confirmPassword.value=e.target.value
+    })
+
+    function submitData(){
+        fetch("http://localhost:5000/landing",{
+            method: 'POST',
+            headers:{},
+            body:{
+                password:password.value,
+                confirmPasssword:confirmPassword.value,
+            }
+        })
+    }
+
+    submit.addEventListener("submit",submitData)
+
+
+</script>
+</html>

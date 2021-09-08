@@ -1,6 +1,7 @@
 const express = require("express")
 const bodyParser = require("body-parser")
 const router = express.Router()
+const lodash = require("lodash")
 router.use(bodyParser.json())
 // model
 const {Video} = require("../models/video.model")
@@ -56,7 +57,15 @@ router.route("/:videoId")
                 res.status(200).json({success:true,updatedVideo,tokens})
                 break;
 
-            // case "like":
+            case "like":
+                video = lodash.extend(video,{like:video.like ? video.like+1 : 1})           
+                await video.save()
+                res.status(200).json({video})
+
+            case "dislike":
+                video = lodash.extend(video,{like:video.dislike ? video.dislike+1 : 1})           
+                await video.save()
+                res.status(200).json({video})
 
             default:
                 res.status(500).json({success:false,message:"internal server error"})
