@@ -3,7 +3,6 @@ const axios = require("axios")
 const {Token} = require("../models/refreshToken.model")
 
 async function verifyToken(req,res,next){
-
     // checking if the refresh token is valid
     const rt = req.body.token
     try{
@@ -27,6 +26,7 @@ async function verifyToken(req,res,next){
                     accessToken:token,
                     refreshToken:req.body.token
                 }
+                req.body.username=user.username
                 next()
             }
         })

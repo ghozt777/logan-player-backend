@@ -1,8 +1,10 @@
 const express = require("express")
 const app = express()
-
+const cors = require("cors")
 // loading the .env file
 require("dotenv").config()
+
+app.use(cors())
 
 //db connect
 const {dbConnect} = require("./db/db.connect")
@@ -10,6 +12,7 @@ dbConnect()
 
 // routes 
 const home = require("./routes/home.route")
+const user = require("./routes/user.route")
 const login = require("./routes/login.route")
 const logout = require("./routes/logout.route")
 const videos = require("./routes/videos.route")
@@ -22,8 +25,10 @@ const {routeNotFound} = require("./middleware/routeNotFound.middleware")
 // Error Handler
 const {errorHandler} = require("./middleware/errorHandler.middleware")
 
+
 // routing
 app.use("/",home)
+app.use("/user",user)
 app.use("/login",login)
 app.use("/logout",logout)
 app.use("/videos",videos)

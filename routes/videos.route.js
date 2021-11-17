@@ -13,7 +13,7 @@ const {findUser} = require("../middleware/findUser.middleware")
 const { verifyToken } = require("../middleware/verifytoken.middleware")
 
 router.param("videoId",findVideo)
-router.use("/:videoId",findUser,verifyToken)
+router.use("/:videoId",verifyToken,findUser)
 
 
 router.route('/')
@@ -51,9 +51,9 @@ router.route("/:videoId")
         switch(req.query.type){
             case "add-comment":
                 const comment = req.body.comment
-                video.comments.push({user:foundUser,content:{time:new Date().toLocaleDateString(),description:comment}})
+                video.comments.unshift({user:foundUser,content:{time:new Date().toLocaleDateString(),description:comment}})
                 await video.save()
-                let updatedVideo = await Video.findById(video)
+                let updatedVideo = await Video.findById(video._id).populate("comments.user" , "username")
                 res.status(200).json({success:true,updatedVideo,tokens})
                 break;
 

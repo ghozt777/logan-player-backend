@@ -3,7 +3,7 @@ const router = express.Router()
 const bcrypt = require("bcrypt")
 const bodyParser = require("body-parser")
 const axios = require("axios")
-
+const {User} = require("../models/user.model")
 
 //db
 const {Token} = require("../models/refreshToken.model")
@@ -24,7 +24,11 @@ router.route("/")
         try{
             const tokens = await axios.post("https://jwt-server.ghozt777.repl.co/gen-token",{user:{username:user.username,email:user.email,password:user.password},time:"200"})
             await new Token({token:tokens.data.refreshToken}).save()
-            res.status(201).json({success:true,accessToken:tokens.data.accessToken,refreshToken:tokens.data.refreshToken})
+            const savedUser = await User.findById(user._id)
+              .populate('history.video playlist.videos likedVideos watchLater')
+            res.status(201).json({success:true,
+            savedUser,
+            accessToken:tokens.data.accessToken,refreshToken:tokens.data.refreshToken})
         }catch(err){
             return res.status(500).json({success:false,messag:"internal server error"})
         }
